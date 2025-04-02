@@ -1,0 +1,4 @@
+repository "Generator LVL@Pietrass@cloud"
+  path "/"
+    br "/main"
+    co "/main"
