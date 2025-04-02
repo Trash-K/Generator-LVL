@@ -17,11 +17,11 @@ public class RaycastProgress : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Ray ray = new Ray(transform.position, transform.forward); // Tworzenie promienia z pozycji kamery w kierunku jej przodu
+        Ray ray = new Ray(transform.position, transform.forward); 
 
-        RaycastHit hit;  // Zmienna do przechowywania informacji o trafionym obiekcie
+        RaycastHit hit;  
 
-        if (Input.GetKey(selectKey) && Physics.Raycast(ray, out hit, Range)) // Sprawdzenie, czy promieñ trafi³ w coœ w zasiêgu Range jednostek
+        if (Input.GetKey(selectKey) && Physics.Raycast(ray, out hit, Range)) // Sprawdzenie, czy promieñ trafi³ w coœ w zasiêgu
         {
             //shouldUpdate = false;
             indicatorTimer -= Time.deltaTime;
