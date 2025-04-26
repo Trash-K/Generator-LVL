@@ -31,9 +31,9 @@ public class RaycastProgress1 : MonoBehaviour
             raddialIndicatorUI.enabled = true;
             raddialIndicatorUI.fillAmount = indicatorTimer;
 
-            Debug.Log("Hit: " + hit.collider.gameObject.name); // Wypisuje co trafiono promieniem
+           // Debug.Log("Hit: " + hit.collider.gameObject.name); // Wypisuje co trafiono promieniem
 
-            if (indicatorTimer <= 0)
+            if (indicatorTimer <= 0 && hit.collider.CompareTag("Destroyable"))
             {
                 Debug.Log("Tera mnie wypierdol!");
                 indicatorTimer = 0;
