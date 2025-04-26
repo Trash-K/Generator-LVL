@@ -5,7 +5,7 @@ public class ObjectTransformation : MonoBehaviour
 {
     [SerializeField] private GameObject newPrefab; // Prefab, na który obiekt siê zmieni
     [SerializeField] private float holdTime = 5f; // Czas trzymania klawisza E
-    [SerializeField] public Slider holdSlider; // UI Slider do wyœwietlania postêpu
+    [SerializeField] public Slider holdSlider; // UI Slider do wyœwietlania postêpu to takie kó³ko co siê ³aduje
 
     private float holdTimer = 0f;
     private bool isLookingAt = false; // Czy gracz patrzy na ten obiekt
@@ -13,13 +13,13 @@ public class ObjectTransformation : MonoBehaviour
     void Start()
     {
 
-        // Zak³adaj¹c, ¿e w scenie masz tylko jeden obiekt Slider
+        // dodanie slidera (kó³ka do ³adowania UI) NIE DODAWAÆ WIÊCEJ KÓ£EK SLIDERÓW ITP BROÑ BO¯E
         Slider holdSlider = FindAnyObjectByType<Slider>();
 
         if (holdSlider != null)
         {
-            // Mo¿esz ustawiæ inne parametry Slidera, jeœli chcesz
-            holdSlider.gameObject.SetActive(false); // Ukrywamy Slider na pocz¹tku
+            // parametry Slidera
+            holdSlider.gameObject.SetActive(false); // Ukrycie slidera
             holdSlider.maxValue = holdTime;
             holdSlider.value = 0;
         }
@@ -30,7 +30,7 @@ public class ObjectTransformation : MonoBehaviour
 
         if (holdSlider != null)
         {
-            holdSlider.gameObject.SetActive(false); // Ukrywamy pasek na start
+            holdSlider.gameObject.SetActive(false); // Ukrycie paska progresu
             holdSlider.maxValue = holdTime;
             holdSlider.value = 0;
         }
@@ -38,19 +38,19 @@ public class ObjectTransformation : MonoBehaviour
 
     void Update()
     {
-        if (isLookingAt && Input.GetKey(KeyCode.E)) // Jeœli patrzymy na obiekt i trzymamy E
+        if (isLookingAt && Input.GetKey(KeyCode.E)) // Jeœli patrzy na obiekt i trzyma E
         {
-            holdTimer += Time.deltaTime; // Zwiêkszaj licznik czasu
+            holdTimer += Time.deltaTime; // Zwiêksza licznik czasu
             UpdateUI();
 
             if (holdTimer >= holdTime) // Jeœli czas jest wiêkszy lub równy ni¿ wymagany czas
             {
-                TransformObject(); // Zmieniamy obiekt
+                TransformObject(); // Zmienia obiekt na "Wydobyty/wykopany" - do ustalenia
             }
         }
         else // Jeœli nie patrzymy na obiekt lub nie trzymamy E
         {
-            holdTimer = 0f; // Resetujemy timer
+            holdTimer = 0f; // Reset timer
             UpdateUI();
         }
     }
@@ -61,7 +61,7 @@ public class ObjectTransformation : MonoBehaviour
         {
             // Tworzymy nowy prefab w tej samej pozycji i obrocie
             Instantiate(newPrefab, transform.position, transform.rotation);
-            Destroy(gameObject); // Usuwamy oryginalny obiekt
+            Destroy(gameObject); //Usuwanie wkopanego/niewydobytego obiektu
         }
     }
 
@@ -82,7 +82,7 @@ public class ObjectTransformation : MonoBehaviour
         }
     }
 
-    // Funkcja wywo³ywana przez Raycast w innym skrypcie
+    // Funkcja wywo³ywana przez Raycast czy patrzy
     public void SetLookingAt(bool state)
     {
         isLookingAt = state;

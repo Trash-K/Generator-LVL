@@ -34,7 +34,7 @@ public class GravityPickup : MonoBehaviour
             ThrowObject();
         }
 
-        // Sprawdzamy, czy obiekt znajduje siê w zasiêgu raycasta
+        // Sprawdza, czy obiekt znajduje siê w zasiêgu raycasta
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, pickupRange))
         {

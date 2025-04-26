@@ -24,14 +24,14 @@ public class RaycastProgress1 : MonoBehaviour
 
         RaycastHit hit;  // Zmienna do przechowywania informacji o trafionym obiekcie
 
-        if (Input.GetKey(selectKey) && Physics.Raycast(ray, out hit, Range)) // Sprawdzenie, czy promieñ trafi³ w coœ w zasiêgu Range jednostek
+        if (Input.GetKey(selectKey) && Physics.Raycast(ray, out hit, Range)) // Sprawdzenie, czy promieñ trafi³ w coœ w zasiêgu Range
         {
 
             indicatorTimer -= Time.deltaTime;
             raddialIndicatorUI.enabled = true;
             raddialIndicatorUI.fillAmount = indicatorTimer;
 
-            Debug.Log("Hit: " + hit.collider.gameObject.name); // Wypisanie nazwy obiektu, w który trafi³ promieñ
+            Debug.Log("Hit: " + hit.collider.gameObject.name); // Wypisuje co trafiono promieniem
 
             if (indicatorTimer <= 0)
             {
@@ -45,7 +45,7 @@ public class RaycastProgress1 : MonoBehaviour
         }
 
 
-        if (!Input.GetKey(selectKey)) // Sprawdzenie, czy promieñ trafi³ w coœ w zasiêgu Range jednostek
+        if (!Input.GetKey(selectKey)) // czy promieñ trafi³ w coœ w zasiêgu Range
         {
 
             indicatorTimer += Time.deltaTime;

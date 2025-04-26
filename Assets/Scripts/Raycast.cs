@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Raycast : MonoBehaviour
 {
-    [SerializeField] float Range = 5.0f;
+    [SerializeField] float Range = 3f;
     void Update()
     {
        

@@ -14,7 +14,7 @@ public class PlayerInventory : MonoBehaviour
         if (item != null)
         {
             AddItem(item);
-            other.gameObject.SetActive(false); // Dezaktywuje gameObject zamiast go usuwaæ
+            other.gameObject.SetActive(false); // Dezaktywuje gameObject 
         }
     }
 
@@ -41,7 +41,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-       // Debug.Log("Brak miejsca");
+       // Debug.Log("niema miejsca");
     }
 
     public void Update()
@@ -51,7 +51,7 @@ public class PlayerInventory : MonoBehaviour
         
     }
 
-    // Funkcja do aktualizacji tekstu w UI
+    // aktualiacja tekstu w UI
     private void DisplayInventory()
     {
         string inventoryContent = "Ekwipunek gracza:";  
@@ -66,6 +66,6 @@ public class PlayerInventory : MonoBehaviour
 
         }
 
-        inventoryText.text = inventoryContent; // Ustawiamy tekst w UI
+        inventoryText.text = inventoryContent; 
     }
 }

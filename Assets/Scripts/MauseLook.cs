@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-// Wykonuje obrot kamery myszka z ograniczeniem rotacji pionowej.
+
 
 public class ExampleClass : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class ExampleClass : MonoBehaviour
         verticalRotation -= v;
         verticalRotation = Mathf.Clamp(verticalRotation, minVerticalAngle, maxVerticalAngle);
 
-        // Zastosuj obroty
+        //  obroty
         transform.localEulerAngles = new Vector3(verticalRotation, transform.localEulerAngles.y + h, 0);
     }
 }

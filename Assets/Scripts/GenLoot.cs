@@ -17,7 +17,7 @@ public class LootManager : MonoBehaviour
                 // Losuje losowy prefab z listy
                 GameObject randomLoot = losujLoot[Random.Range(0, losujLoot.Count)];
 
-                // Tworzy instancjê losowego lootu na pozycji loot.transform
+                // Tworzy kopie losowego lootu na pozycji loot.transform
                 GameObject spawnedLoot = Instantiate(randomLoot, loot.transform.position, Quaternion.identity);
 
                 // Dodaje do listy
