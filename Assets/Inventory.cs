@@ -41,7 +41,7 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-       // Debug.Log("niema miejsca");
+        Debug.Log("niema miejsca");
     }
 
     public void Update()
@@ -60,7 +60,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (itemSlots[i] != null) 
             {
-                inventoryContent += $"{itemSlots[i].itemName} x{itemCounts[i]}"; 
+                inventoryContent += $"\n{itemSlots[i].itemName} x{itemCounts[i]}"; 
             }
 
 
