@@ -3,10 +3,27 @@ using TMPro;
 
 public class PlayerInventory : MonoBehaviour
 {
+    // Singleton
+    public static PlayerInventory Instance;
+
     private Item[] itemSlots = new Item[10]; // Tablica przechowuj¹ca przedmioty
-    private int[] itemCounts = new int[10]; // Tablica przechowuj¹ca iloœæ ka¿dego przedmiotu
+    private int[] itemCounts = new int[10];  // Tablica przechowuj¹ca iloœæ ka¿dego przedmiotu
 
     public TextMeshProUGUI inventoryText;  // Pole na tekst do wyœwietlania ekwipunku
+
+    private void Awake()
+    {
+        // Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // Tylko jeden taki obiekt w grze
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +31,7 @@ public class PlayerInventory : MonoBehaviour
         if (item != null)
         {
             AddItem(item);
-            other.gameObject.SetActive(false); // Dezaktywuje gameObject 
+            other.gameObject.SetActive(false); // Dezaktywuje gameObject
         }
     }
 
@@ -23,9 +40,10 @@ public class PlayerInventory : MonoBehaviour
         // Porównuje na podstawie nazwy przedmiotu
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i] != null && itemSlots[i].itemName == item.itemName) // Jeœli przedmiot ju¿ istnieje
+            if (itemSlots[i] != null && itemSlots[i].itemName == item.itemName)
             {
-                itemCounts[i]++; // Zwiêksza iloœæ
+                itemCounts[i]++;
+                UpdateInventoryUI();
                 return;
             }
         }
@@ -37,35 +55,29 @@ public class PlayerInventory : MonoBehaviour
             {
                 itemSlots[i] = item;
                 itemCounts[i] = 1;
+                UpdateInventoryUI();
                 return;
             }
         }
 
-        Debug.Log("niema miejsca");
+        Debug.Log("Brak miejsca w ekwipunku!");
     }
 
-    public void Update()
-    {
-      
-            DisplayInventory(); // Wyœwietla zawartoœæ ekwipunku na teksie w UI
-        
-    }
+    
 
-    // aktualiacja tekstu w UI
-    private void DisplayInventory()
+    private void UpdateInventoryUI()
     {
-        string inventoryContent = "Ekwipunek gracza:";  
+        string inventoryContent = "Ekwipunek gracza:";
 
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (itemSlots[i] != null) 
+            if (itemSlots[i] != null)
             {
-                inventoryContent += $"\n{itemSlots[i].itemName} x{itemCounts[i]}"; 
+                inventoryContent += $"\n{itemSlots[i].itemName} x{itemCounts[i]}";
             }
-
-
         }
 
-        inventoryText.text = inventoryContent; 
+        if (inventoryText != null)
+            inventoryText.text = inventoryContent;
     }
 }
