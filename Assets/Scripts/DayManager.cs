@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class DayManager : MonoBehaviour
 {
@@ -13,11 +14,11 @@ public class DayManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Nie usuwaj przy zmianie sceny
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // Zapobiega duplikatom
+            Destroy(gameObject);
         }
     }
 
@@ -39,9 +40,26 @@ public class DayManager : MonoBehaviour
 
             if (currentDay > maxDays)
             {
-                // Gra siê koñczy
-                SceneManager.LoadScene("Game_Over"); // Podmieñ na nazwê twojej sceny koñcowej
+                StartCoroutine(EndGameSequence());
             }
         }
+    }
+
+    IEnumerator EndGameSequence()
+    {
+       
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject ui = GameObject.Find("Canvas");
+
+       
+       
+        if (ui != null) ui.SetActive(false);
+        SceneManager.LoadScene("Game_Over");
+        if (player != null) player.SetActive(false);
+
+        yield return new WaitForSeconds(2f);
+
+       
+       
     }
 }

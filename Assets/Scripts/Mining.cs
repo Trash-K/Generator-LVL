@@ -45,10 +45,10 @@ public class ObjectTransformation : MonoBehaviour
 
             if (holdTimer >= holdTime) // Jeœli czas jest wiêkszy lub równy ni¿ wymagany czas
             {
-                TransformObject(); // Zmienia obiekt na "Wydobyty/wykopany" - do ustalenia
+                TransformObject(); // Zmienia obiekt na "Wydobyty/wykopany" 
             }
         }
-        else // Jeœli nie patrzymy na obiekt lub nie trzymamy E
+        else // Jeœli nie patrzy na obiekt lub nie trzymam E
         {
             holdTimer = 0f; // Reset timer
             UpdateUI();
@@ -59,7 +59,7 @@ public class ObjectTransformation : MonoBehaviour
     {
         if (newPrefab != null)
         {
-            // Tworzymy nowy prefab w tej samej pozycji i obrocie
+            
             Instantiate(newPrefab, transform.position, transform.rotation);
             Destroy(gameObject); //Usuwanie wkopanego/niewydobytego obiektu
         }

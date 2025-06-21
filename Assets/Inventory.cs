@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     public TextMeshProUGUI inventoryText;
 
-    // Nowy system: nazwa - iloœæ
+   
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
 
     private void Awake()

@@ -37,7 +37,7 @@ public class PreviewBuildWithItem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !isBuilt && IsLookingAtThis())
         {
-            // Sprawdü czy gracz ma wymagany przedmiot
+            
             if (PlayerInventory.Instance.HasItem(requiredItemName))
             {
                 Build();
@@ -68,7 +68,7 @@ public class PreviewBuildWithItem : MonoBehaviour
 
         Debug.Log("Zbudowano: " + requiredItemName);
 
-        GameManager.Instance.ReportBuiltObject(buildID); //  tu przekazujemy ID
+        GameManager.Instance.ReportBuiltObject(buildID); 
     }
 
 

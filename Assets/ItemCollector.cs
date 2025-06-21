@@ -5,7 +5,7 @@ public class ItemCollector : MonoBehaviour
     public static ItemCollector Instance;
     private void Awake()
     {
-        // Singleton
+       
         if (Instance == null)
         {
             Instance = this;
@@ -14,7 +14,7 @@ public class ItemCollector : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Tylko jeden taki obiekt w grze
+            Destroy(gameObject); 
             
         }
     }

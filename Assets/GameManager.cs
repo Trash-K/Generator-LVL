@@ -65,6 +65,13 @@ public class GameManager : MonoBehaviour
     void TriggerWinState()
     {
         Debug.Log(" WYGRANA! Rakieta Gotowa do Startu ");
+
+        GameObject ui = GameObject.Find("Canvas");
+
+
+
+        if (ui != null) ui.SetActive(false);
+      
         GameManager.Instance.ChangeScene("WinScene");
     }
 }

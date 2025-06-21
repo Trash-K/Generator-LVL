@@ -15,7 +15,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (GameManager.Instance.hasShownMainMenu)
         {
-            // Pomijamy menu – uruchamiamy grê od razu
+            
             if (menuUI != null) menuUI.SetActive(false);
             if (gameplayCanvas != null) gameplayCanvas.SetActive(true);
             if (player != null) player.SetActive(true);
@@ -31,7 +31,7 @@ public class MainMenuManager : MonoBehaviour
         {
             player.GetComponentInChildren<SimpleMovement>(),
             player.GetComponentInChildren<ExampleClass>(),
-            // Dodaj inne skrypty, jeœli chcesz je blokowaæ
+            
         };
 
         foreach (var comp in componentsToDisable)

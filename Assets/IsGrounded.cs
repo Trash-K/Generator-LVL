@@ -6,19 +6,19 @@ public class IsGrounded : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // Sprawdzamy, czy gracz dotyka obiektu, który ma tag "Ground"
+       
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true; // Gracz dotyka ziemi
+            isGrounded = true; 
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        // Sprawdzamy, czy gracz przesta³ dotykaæ obiektu, który ma tag "Ground"
+        
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false; // Gracz opuœci³ ziemiê
+            isGrounded = false; 
         }
     }
 }
