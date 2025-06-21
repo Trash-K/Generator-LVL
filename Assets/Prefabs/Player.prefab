@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6894743497630878600}
   - component: {fileID: 5878610724348699236}
   - component: {fileID: 1906855550595513992}
-  - component: {fileID: 5367431851194475005}
+  - component: {fileID: 5466998619979678847}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -282,7 +282,7 @@ MonoBehaviour:
   raddialIndicatorUI: {fileID: 0}
   selectKey: 323
   maxIndicatorTimer: 1
---- !u!114 &5367431851194475005
+--- !u!114 &5466998619979678847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,10 +291,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 666910457947431793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9952788057045b49a4d53e09ba8f91a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1965b40a8844a7e4c9a5c970690533c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryText: {fileID: 0}
 --- !u!1 &3911374123941692267
 GameObject:
   m_ObjectHideFlags: 0

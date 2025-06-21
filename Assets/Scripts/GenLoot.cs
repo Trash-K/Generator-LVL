@@ -26,5 +26,6 @@ public class LootManager : MonoBehaviour
                 Debug.Log($"Dodano {randomLoot.name} na pozycji {loot.transform.position}");
             }
         }
+        GameManager.Instance.isChangingScene = false;
     }
 }

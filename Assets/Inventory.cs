@@ -1,27 +1,28 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class PlayerInventory : MonoBehaviour
 {
-    // Singleton
     public static PlayerInventory Instance;
 
-    private Item[] itemSlots = new Item[10]; // Tablica przechowuj¹ca przedmioty
-    private int[] itemCounts = new int[10];  // Tablica przechowuj¹ca iloœæ ka¿dego przedmiotu
+    public TextMeshProUGUI inventoryText;
 
-    public TextMeshProUGUI inventoryText;  // Pole na tekst do wyœwietlania ekwipunku
+    // Nowy system: nazwa - iloœæ
+    private Dictionary<string, int> inventory = new Dictionary<string, int>();
 
     private void Awake()
     {
-        // Singleton
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("PlayerInventory zachowane miêdzy scenami");
         }
         else
         {
-            Destroy(gameObject); // Tylko jeden taki obiekt w grze
+            Destroy(gameObject);
+            Debug.Log("Duplikat PlayerInventory zniszczony");
         }
     }
 
@@ -30,54 +31,52 @@ public class PlayerInventory : MonoBehaviour
         Item item = other.GetComponent<Item>();
         if (item != null)
         {
-            AddItem(item);
-            other.gameObject.SetActive(false); // Dezaktywuje gameObject
+            AddItem(item.itemName);
+            other.gameObject.SetActive(false);
         }
     }
 
-    public void AddItem(Item item)
+    public void AddItem(string itemName)
     {
-        // Porównuje na podstawie nazwy przedmiotu
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            if (itemSlots[i] != null && itemSlots[i].itemName == item.itemName)
-            {
-                itemCounts[i]++;
-                UpdateInventoryUI();
-                return;
-            }
-        }
+        if (inventory.ContainsKey(itemName))
+            inventory[itemName]++;
+        else
+            inventory[itemName] = 1;
 
-        // Jeœli przedmiot nie istnieje, dodaje go do pierwszego wolnego miejsca
-        for (int i = 0; i < itemSlots.Length; i++)
-        {
-            if (itemSlots[i] == null)
-            {
-                itemSlots[i] = item;
-                itemCounts[i] = 1;
-                UpdateInventoryUI();
-                return;
-            }
-        }
-
-        Debug.Log("Brak miejsca w ekwipunku!");
+        UpdateInventoryUI();
     }
 
-    
+    public bool HasItem(string itemName)
+    {
+        return inventory.ContainsKey(itemName) && inventory[itemName] > 0;
+    }
+
+    public bool RemoveItem(string itemName)
+    {
+        if (HasItem(itemName))
+        {
+            inventory[itemName]--;
+            if (inventory[itemName] <= 0)
+                inventory.Remove(itemName);
+
+            UpdateInventoryUI();
+            return true;
+        }
+
+        Debug.Log("Przedmiot nie znaleziony w ekwipunku!");
+        return false;
+    }
 
     private void UpdateInventoryUI()
     {
-        string inventoryContent = "Ekwipunek gracza:";
+        if (inventoryText == null) return;
 
-        for (int i = 0; i < itemSlots.Length; i++)
+        string content = "Ekwipunek gracza:";
+        foreach (var pair in inventory)
         {
-            if (itemSlots[i] != null)
-            {
-                inventoryContent += $"\n{itemSlots[i].itemName} x{itemCounts[i]}";
-            }
+            content += $"\n{pair.Key} x{pair.Value}";
         }
 
-        if (inventoryText != null)
-            inventoryText.text = inventoryContent;
+        inventoryText.text = content;
     }
 }

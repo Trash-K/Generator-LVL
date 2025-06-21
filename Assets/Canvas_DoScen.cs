@@ -2,8 +2,18 @@ using UnityEngine;
 
 public class PersistentCanvas : MonoBehaviour
 {
-    void Awake()
+    public static PersistentCanvas Instance;
+    private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // Singleton
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // Tylko jeden taki obiekt w grze
+        }
     }
 }
