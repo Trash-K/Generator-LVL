@@ -9,6 +9,8 @@ public class SlotMachine : MonoBehaviour
     public Transform rewardSpawnPoint;
     public Animator slotAnimator;
 
+    public SlotMachineUI slotUI; //  przypnij w Inspectorze
+
     private bool isRolling = false;
 
     void Start()
@@ -111,11 +113,13 @@ public class SlotMachine : MonoBehaviour
                 ? $" Usuniêto przedmiot: {item}"
                 : $" NIE uda³o siê usun¹æ: {item}");
         }
-
+        slotUI.selectedText.text = " ";
         yield return new WaitForSeconds(3f);
 
         SpawnReward();
         selectedItems.Clear();
+       
+
         isRolling = false;
     }
 

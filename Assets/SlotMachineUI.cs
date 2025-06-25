@@ -41,24 +41,28 @@ public class SlotMachineUI : MonoBehaviour
             int alreadyAdded = slotMachine.selectedItems.FindAll(i => i == itemName).Count;
             btn.interactable = slotMachine.selectedItems.Count < 3 && alreadyAdded < count;
 
+            Image iconImage = buttonGO.transform.Find("Icon").GetComponent<Image>();
+            iconImage.sprite = ItemDatabase.Instance.GetIcon(itemName);
+
+
 
         }
 
         UpdateSelectedText();
+
     }
 
     public void AddToMachine(string itemName)
     {
+        Debug.Log($" Klikniêto przycisk przedmiotu: {itemName}");
+
         if (slotMachine.selectedItems.Count >= 3)
         {
             Debug.Log(" Maszyna przyjmuje tylko 3 przedmioty.");
             return;
         }
 
-        // Zlicz, ile razy ten przedmiot ju¿ zosta³ dodany
         int alreadyAdded = slotMachine.selectedItems.FindAll(i => i == itemName).Count;
-
-        // Ile gracz ma tego przedmiotu?
         int playerHas = PlayerInventory.Instance.GetItemCount(itemName);
 
         if (alreadyAdded >= playerHas)
@@ -74,6 +78,7 @@ public class SlotMachineUI : MonoBehaviour
     }
 
 
+
     private void UpdateSelectedText()
     {
         selectedText.text = "Wybrane: " + string.Join(", ", slotMachine.selectedItems);
@@ -85,5 +90,6 @@ public class SlotMachineUI : MonoBehaviour
         Debug.Log(" Resetowano wybrane przedmioty w maszynie.");
         RefreshUI();
     }
+
 
 }
