@@ -10,6 +10,10 @@ public class SimpleMovement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+    public bool isFrozen = false;
+
+
+
 
     void Start()
     {
@@ -18,6 +22,21 @@ public class SimpleMovement : MonoBehaviour
 
     void Update()
     {
+        if (isFrozen)
+        {
+            // Resetuj tylko ruch poziomy — pionowe "osadzenie" na ziemi musi byæ
+            if (controller.isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
+            else
+            {
+                velocity.y -= gravity * Time.deltaTime;
+            }
+
+            controller.Move(velocity * Time.deltaTime); // tylko pionowy ruch
+            return;
+        }
         isGrounded = controller.isGrounded; // Sprawdzamy, czy dotykamy ziemi
 
         if (isGrounded && velocity.y < 0)

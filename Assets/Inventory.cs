@@ -26,6 +26,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         Item item = other.GetComponent<Item>();
@@ -79,4 +80,16 @@ public class PlayerInventory : MonoBehaviour
 
         inventoryText.text = content;
     }
+
+    public int GetItemCount(string itemName)
+    {
+        if (inventory.ContainsKey(itemName))
+            return inventory[itemName];
+        return 0;
+    }
+    public Dictionary<string, int> GetInventory()
+    {
+        return new Dictionary<string, int>(inventory); // kopia, ¿eby nie da³o siê edytowaæ z zewn¹trz
+    }
+
 }

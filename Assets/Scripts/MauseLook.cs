@@ -11,7 +11,7 @@ public class ExampleClass : MonoBehaviour
     public float maxVerticalAngle = 45.0f;
 
     private float verticalRotation = 90.0f;
-
+    public bool isFrozen = false;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -20,6 +20,8 @@ public class ExampleClass : MonoBehaviour
 
     void Update()
     {
+        if (isFrozen)
+            return;
         // Pobiera dane o ruchu myszy
         float h = horizontalSpeed * Input.GetAxisRaw("Mouse X");
         float v = verticalSpeed * Input.GetAxisRaw("Mouse Y");
