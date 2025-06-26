@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8781118774380935728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2198709021466915111}
+  - component: {fileID: 3733516483325070725}
+  m_Layer: 0
+  m_Name: ItemDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2198709021466915111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781118774380935728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4636453, y: -31.222412, z: 99.83841}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3733516483325070725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781118774380935728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 609a8c78bd10aa14fa549d6179b9f9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - itemName: Cola
+    icon: {fileID: 21300000, guid: 03cc1685aa5879f4885d1d6fa6654235, type: 3}
+  - itemName: Gasnica
+    icon: {fileID: 21300000, guid: 5a36bdcb4e25f9c4dac0e975879a5760, type: 3}
+  - itemName: Grill
+    icon: {fileID: 21300000, guid: 0a464b2af4bf4ac4b80cd98450d38fb1, type: 3}
+  - itemName: Opona
+    icon: {fileID: 21300000, guid: 588cbcd5c61a00440b4586a676536805, type: 3}
+  - itemName: Pacholek
+    icon: {fileID: 21300000, guid: 0fb11f59f9fb5ca4b8d9ec3876df03ec, type: 3}
+  - itemName: Pizza
+    icon: {fileID: 21300000, guid: 8bb4f51301ba3f84882a3c656390686e, type: 3}
+  - itemName: Pralka
+    icon: {fileID: 21300000, guid: f8a23c86c1778a74fa1c183d42d04b6c, type: 3}
+  - itemName: Tasma
+    icon: {fileID: 21300000, guid: 25fda2b1b0577ba4caf7321bc1922a8d, type: 3}
