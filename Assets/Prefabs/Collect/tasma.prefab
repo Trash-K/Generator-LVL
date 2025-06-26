@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 506499393158510352}
   - component: {fileID: 8498523081242691367}
   - component: {fileID: 7435316282184324581}
-  - component: {fileID: 3453318563637706961}
+  - component: {fileID: 6511745740979993419}
   m_Layer: 0
   m_Name: tasma
   m_TagString: Untagged
@@ -109,8 +109,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0011, y: 0.0011, z: 0.00036575025}
-  m_Center: {x: 2.7283066e-20, y: 8.18492e-20, z: -0.000013106348}
+  m_Size: {x: 0.001263447, y: 0.0012507668, z: 0.0004684977}
+  m_Center: {x: 0.00000043466682, y: 0.0000033505758, z: 0.000010504425}
 --- !u!114 &8498523081242691367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +151,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &3453318563637706961
-BoxCollider:
+--- !u!135 &6511745740979993419
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -170,5 +170,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0013000002, y: 0.0013000002, z: 0.0005187148}
-  m_Center: {x: 9.283655e-21, y: 2.7850964e-20, z: -0.000004459719}
+  m_Radius: 0.001
+  m_Center: {x: 0, y: 0, z: 0}

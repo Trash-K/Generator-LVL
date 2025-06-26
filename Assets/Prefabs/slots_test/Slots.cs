@@ -7,11 +7,12 @@ public class SlotMachine : MonoBehaviour
     public List<string> selectedItems = new List<string>(); // Nazwy wybranych przedmiotów
     public GameObject[] rewardPrefabs;
     public Transform rewardSpawnPoint;
-    public Animator slotAnimator;
+ 
 
     public SlotMachineUI slotUI; //  przypnij w Inspectorze
 
     private bool isRolling = false;
+    public Transform[] reels; // np. 3 obiekty do krêcenia
 
     void Start()
     {
@@ -96,14 +97,6 @@ public class SlotMachine : MonoBehaviour
     {
         isRolling = true;
 
-        if (slotAnimator != null)
-        {
-            slotAnimator.SetTrigger("StartRoll");
-        }
-        else
-        {
-            Debug.LogWarning(" Animator nie przypisany!");
-        }
 
         // Usuwamy przedmioty z ekwipunku
         foreach (string item in selectedItems)
@@ -114,14 +107,42 @@ public class SlotMachine : MonoBehaviour
                 : $" NIE uda³o siê usun¹æ: {item}");
         }
         slotUI.selectedText.text = " ";
-        yield return new WaitForSeconds(3f);
+        Debug.Log(">> Startujê obracanie bêbnów!");
+        yield return StartCoroutine(SpinReels(3f)); // 3 sekundy krêcenia
+       
+
 
         SpawnReward();
         selectedItems.Clear();
        
 
         isRolling = false;
+        slotUI.RefreshUI();
+
     }
+    private IEnumerator SpinReels(float duration)
+    {
+        float time = 0f;
+        float maxSpeed = 720f; // stopnie/sekundê
+
+        while (time < duration)
+        {
+            float spinSpeed = Mathf.Lerp(maxSpeed, 0, time / duration); // stopniowe zwalnianie
+
+            foreach (Transform reel in reels)
+            {
+                reel.Rotate(0f, 0f, spinSpeed * Time.deltaTime, Space.Self);
+            }
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        Debug.Log($" Obracanie zakoñczone. Finalna rotacja: {reels[0].eulerAngles}");
+    }
+
+
+
 
     private void SpawnReward()
     {

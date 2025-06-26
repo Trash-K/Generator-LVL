@@ -17,6 +17,11 @@ public class SlotMachineUI : MonoBehaviour
 
     public void RefreshUI()
     {
+        if (selectedText == null)
+        {
+            Debug.LogWarning("Brak przypisanego pola selectedText w SlotMachineUI!");
+            return;
+        }
         // Wyczyœæ stare przyciski
         foreach (Transform child in itemListContainer)
         {
@@ -81,8 +86,15 @@ public class SlotMachineUI : MonoBehaviour
 
     private void UpdateSelectedText()
     {
+        if (selectedText == null)
+        {
+            Debug.LogWarning("Brak przypisanego pola selectedText w SlotMachineUI!");
+            return;
+        }
+
         selectedText.text = "Wybrane: " + string.Join(", ", slotMachine.selectedItems);
     }
+
 
     public void ResetMachineSelection()
     {

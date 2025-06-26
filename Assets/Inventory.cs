@@ -11,6 +11,8 @@ public class PlayerInventory : MonoBehaviour
    
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
 
+    public InventoryUI inventoryUI;
+
     private void Awake()
     {
         if (Instance == null)
@@ -45,6 +47,7 @@ public class PlayerInventory : MonoBehaviour
             inventory[itemName] = 1;
 
         UpdateInventoryUI();
+        inventoryUI?.UpdateUI(); // graficzne UI
     }
 
     public bool HasItem(string itemName)
@@ -61,10 +64,10 @@ public class PlayerInventory : MonoBehaviour
                 inventory.Remove(itemName);
 
             UpdateInventoryUI();
+            inventoryUI?.UpdateUI(); // graficzne UI
             return true;
         }
 
-        Debug.Log("Przedmiot nie znaleziony w ekwipunku!");
         return false;
     }
 
