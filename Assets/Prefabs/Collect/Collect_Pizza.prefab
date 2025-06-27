@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2303521248776798820}
   m_Layer: 0
-  m_Name: Collect_Pralka
+  m_Name: Collect_Pizza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,9 +114,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8730197408702985510, guid: a767e73d2105e434888bd4a067e5e1d3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1818462149497091708}
-    - targetCorrespondingSourceObject: {fileID: 8730197408702985510, guid: a767e73d2105e434888bd4a067e5e1d3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5957786354960666337}
   m_SourcePrefab: {fileID: 100100000, guid: a767e73d2105e434888bd4a067e5e1d3, type: 3}
 --- !u!1 &123435761200825664 stripped
 GameObject:
@@ -156,21 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4c34ed354461f4c936ffa4f266ae2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wybranyDrop: {fileID: 7646002220792237012, guid: ec88e75ef5c68094da23ec2a11e831be, type: 3}
---- !u!114 &5957786354960666337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123435761200825664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 3
-  eraseRenderer: 0
+  wybranyDrop: {fileID: 906707911723387521, guid: 8399ecec680ab0b49aff848d3a5025ba, type: 3}
 --- !u!4 &7329150705879168694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2100704780153865936, guid: a767e73d2105e434888bd4a067e5e1d3, type: 3}
