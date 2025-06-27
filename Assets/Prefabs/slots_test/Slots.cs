@@ -14,15 +14,29 @@ public class SlotMachine : MonoBehaviour
     private bool isRolling = false;
     public Transform[] reels; // np. 3 obiekty do krêcenia
 
-    void Start()
+    public void TryAssignUI()
     {
-       // selectedItems.Add("Pacholek");
-       // selectedItems.Add("Pacholek");
-       // selectedItems.Add("Pacholek");
+        if (slotUI == null)
+        {
+            slotUI = FindObjectOfType<SlotMachineUI>();
+            if (slotUI != null)
+            {
+                slotUI.slotMachine = this; // opcjonalnie dwustronne
+                Debug.Log("SlotMachine przypi¹³ UI.");
+            }
+            else
+            {
+                Debug.LogWarning("SlotMachine nie znalaz³ UI!");
+            }
+        }
     }
+
+
 
     public void TryStartRolling()
     {
+        TryAssignUI();
+
         Debug.Log(">>> Próba uruchomienia maszyny...");
 
         if (isRolling)

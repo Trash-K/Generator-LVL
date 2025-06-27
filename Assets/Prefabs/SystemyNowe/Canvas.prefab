@@ -768,7 +768,7 @@ MonoBehaviour:
   itemButtonPrefab: {fileID: 8101165458410964010, guid: 57fcc1193fbb4464f97390ab704d2318, type: 3}
   itemListContainer: {fileID: 1196965881623587020}
   selectedText: {fileID: 3456274183463071655}
-  slotMachine: {fileID: 0}
+  slotMachine: {fileID: 1886375552067874278, guid: f703acec368402d44affff435c308903, type: 3}
 --- !u!1 &2865234216597711837
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,7 +59,10 @@ public class PlayerInteractor : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         player.isFrozen = true;
         cameraLook.isFrozen = true;
+
+        FindObjectOfType<SlotMachine>()?.TryAssignUI(); // <-- dopiero tutaj
     }
+
 
     void CloseMachineUI()
     {

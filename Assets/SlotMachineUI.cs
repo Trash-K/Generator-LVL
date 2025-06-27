@@ -9,11 +9,73 @@ public class SlotMachineUI : MonoBehaviour
     public Transform itemListContainer; // kontener na przyciski
     public TextMeshProUGUI selectedText;
     public SlotMachine slotMachine;
+    void Awake()
+    {
+        if (selectedText == null)
+        {
+            GameObject go = GameObject.Find("Slot_Text");
+            if (go != null)
+                selectedText = go.GetComponent<TextMeshProUGUI>();
+            else
+                Debug.LogWarning("Nie znaleziono obiektu Slot_Text.");
+        }
+
+        if (itemListContainer == null)
+        {
+            GameObject go = GameObject.Find("Lista");
+            if (go != null)
+                itemListContainer = go.transform;
+            else
+                Debug.LogWarning("Nie znaleziono obiektu Lista.");
+        }
+
+        if (slotMachine == null)
+        {
+            slotMachine = FindObjectOfType<SlotMachine>();
+            if (slotMachine == null)
+                Debug.LogWarning("Nie znaleziono SlotMachine w scenie.");
+            else
+                slotMachine.slotUI = this; // wzajemne przypiêcie
+        }
+    }
+
+
 
     void OnEnable()
     {
+        if (slotMachine == null)
+        {
+            slotMachine = FindObjectOfType<SlotMachine>();
+            if (slotMachine != null)
+            {
+                slotMachine.slotUI = this;
+                Debug.Log("SlotMachine przypiêty automatycznie w OnEnable.");
+            }
+            else
+            {
+                Debug.LogWarning("Brak slotMachine w OnEnable.");
+            }
+        }
+
         RefreshUI();
+
+        var rollBtnObj = GameObject.Find("Slot_Button");
+        if (rollBtnObj != null)
+        {
+            Button btn = rollBtnObj.GetComponent<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() =>
+            {
+                slotMachine.TryStartRolling();
+                RefreshUI();
+            });
+        }
+        else
+        {
+            Debug.LogWarning("Nie znaleziono Slot_Button w scenie.");
+        }
     }
+
 
     public void RefreshUI()
     {
